@@ -6,11 +6,14 @@ services:
     container_name: netalertx
     restart: unless-stopped
     network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - NET_BIND_SERVICE
     environment:
       - TZ=${TZ:-Europe/Berlin}
       - PORT=${PORT:-20211}
     volumes:
-      - ./config:/app/config
-      - ./db:/app/db
-      - ./logs:/app/front/log
+      - ./data:/data
+    # Port 20211 wird im Host-Modus direkt am Host geöffnet
     # Port 20211 wird im Host-Modus direkt am Host geöffnet
