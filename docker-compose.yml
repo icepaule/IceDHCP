@@ -2,14 +2,15 @@ version: '3'
 
 services:
   netalertx:
-    image: jorgenevans/netalertx:latest
+    image: ghcr.io/jokob-sk/netalertx:latest
     container_name: netalertx
     restart: unless-stopped
-    network_mode: host # Benötigt für ARP-Scanning im lokalen Subnetz
+    network_mode: host
     environment:
       - TZ=${TZ:-Europe/Berlin}
       - PORT=${PORT:-20211}
     volumes:
       - ./config:/app/config
       - ./db:/app/db
+      - ./logs:/app/front/log
     # Port 20211 wird im Host-Modus direkt am Host geöffnet
