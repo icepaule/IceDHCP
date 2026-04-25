@@ -3,7 +3,7 @@ version: '3'
 services:
   netalertx:
     image: ghcr.io/jokob-sk/netalertx:latest
-    container_name: netalertx
+    container_name: netxalert
     restart: unless-stopped
     network_mode: host
     cap_add:
